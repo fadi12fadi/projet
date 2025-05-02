@@ -1,0 +1,94 @@
+﻿******************************************************************************
+								BISMILLAH 
+
+hadouma notes y9rahoum li raho ykhdm f Presentation (UI) Layer
+******************************************************************************
+
+[28/03/2025] - [Elseddik]
+----------------------------------------------------
+l method addTheseManually t accepti les parameters li dkhlhoum l admin ki ja y ajouter these
+(string titre, string sousTitre, string faculty, string ThesePath, string description, string university, string imagePath, DateTime dateSoutenance)
+id khla kach field fargh ab3t "" comme parameter
+----------------------------------------------------
+
+----------------------------------------------------
+Had l function dirlha copy paste kima rahi ki yji l admin y ajouter these manually
+
+w l button smih : BtnSelectPdf
+
+private void BtnSelectPdf_Click(object sender, RoutedEventArgs e)
+        {
+            // Create OpenFileDialog to let admin choose the PDF file
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "PDF files (*.pdf)|*.pdf",
+                Title = "Select a PDF File"
+            };
+
+            // Show the dialog and process the result
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    // Get selected file path
+                    string selectedFilePath = openFileDialog.FileName;
+                    MessageBox.Show($"PDF file choosen successfully to {destinationPath}", 
+                        "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error choosing file: {ex.Message}", 
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+
+            ////////////////////////////////////
+
+            // Show the dialog and process the result
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    // Get selected file path
+                    string selectedFilePath = openFileDialog.FileName;
+                    
+                    // Create data directory if it doesn't exist
+                    string dataFolder = Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory, 
+                    "..", "..", "..",
+                    "Data", "Documents", "theseAdmin"
+                    );
+                    if (!Directory.Exists(dataFolder))
+                    {
+                        Directory.CreateDirectory(dataFolder);
+                    }
+                    
+                    // Create a unique file name using thesis ID and original file name
+                    string fileName = $"these_{Path.GetFileName(selectedFilePath)}";
+                    string destinationPath = Path.Combine(dataFolder, fileName);
+                    
+                    // Copy the file to the app's data folder
+                    File.Copy(selectedFilePath, destinationPath, true);
+                    
+                    // Update the relative path in the database
+                    string relativePath = Path.Combine("Data", "PDFs", fileName);
+                    UpdateThesisPdfPath(relativePath);
+                    
+                    MessageBox.Show($"PDF file saved successfully to {destinationPath}", 
+                        "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error saving file: {ex.Message}", 
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            ////////////////////////////////////
+
+            TheseBLL theseAdmin = new TheseBLL();
+            
+            // STILL NOT FINISHED
+        }
+----------------------------------------------------

@@ -1,0 +1,627 @@
+﻿<Page x:Class="PlatformeGestionThesesEtMemoiresWPF.Windows.AdminPages.NewTheseAdmine"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PlatformeGestionThesesEtMemoiresWPF.Windows.AdminPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="850" d:DesignWidth="800"
+      Title="NewTheseAdmine">
+
+    <Grid Background="#FFDCC9A4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="175" MaxWidth="250"/>
+            <!-- Sidebar with min/max constraints -->
+            <ColumnDefinition Width="*"/>
+            <!-- Content (fills remaining space) -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" BorderBrush="#5c5c5c3b" BorderThickness="1" Background="#FFF1E8D6" Margin="10,10,10,10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="10">
+                    <!-- Logo/App Name -->
+                    <TextBlock Text="My App" 
+                        FontSize="18" 
+                        FontWeight="Bold" 
+                        Margin="0,0,0,20"
+                        HorizontalAlignment="Center" Foreground="#FF314E3D"/>
+
+                    <!-- Navigation Items -->
+                    <StackPanel>
+                        <!-- Home Button -->
+                        <Border CornerRadius="4" Height="40" Background="Transparent" Cursor="Hand" Margin="0,0,0,10">
+                            <Button Content="Home" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Foreground="#FF314E3D" 
+                             FontSize="14" 
+                             FontWeight="SemiBold"
+                             HorizontalAlignment="Stretch" 
+                             Click="Button_Click">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{x:Null}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Foreground" Value="#333"/>
+                                        <Setter Property="Padding" Value="10,0,0,0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                     HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Stretch"
+                                                     Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Left" 
+                                                                   VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#4290f7"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="#E8F0FE" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="Transparent" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <Border CornerRadius="4" Height="40" Background="Transparent" Cursor="Hand" Margin="0,0,0,10">
+                            <Button Content="Searshe these" 
+Background="Transparent" 
+BorderThickness="0" 
+Foreground="#FF314E3D" 
+FontSize="14" 
+FontWeight="SemiBold" 
+Width="153" Click="Button_Click_7">
+
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{x:Null}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Foreground" Value="#333"/>
+                                        <Setter Property="Padding" Value="10,0,0,0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="Transparent"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Left" 
+                                      VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#4290f7"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="#E8F0FE" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="Transparent" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <!-- Accounts Button -->
+                        <Border CornerRadius="4" Height="40" Background="Transparent" Cursor="Hand" Margin="0,0,0,10">
+                            <Button Content="Accounts" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Foreground="#FF314E3D" 
+                             FontSize="14" 
+                             FontWeight="SemiBold" 
+                             HorizontalAlignment="Stretch" 
+                             Click="Button_Click_1">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{x:Null}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Foreground" Value="#333"/>
+                                        <Setter Property="Padding" Value="10,0,0,0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="Transparent"
+                                                     HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Stretch"
+                                                     Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Left" 
+                                                                   VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#4290f7"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="#E8F0FE" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="Transparent" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+
+                        <!-- Theses Button -->
+                        <Border CornerRadius="4" Height="40" Background="Transparent" Cursor="Hand" Margin="0,0,0,10">
+                            <Button Content="Theses" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Foreground="#FF314E3D" 
+                             FontSize="14" 
+                             FontWeight="SemiBold"
+                             HorizontalAlignment="Stretch"
+                             Click="Button_Click_2">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{x:Null}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Foreground" Value="#333"/>
+                                        <Setter Property="Padding" Value="10,0,0,0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                     HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Stretch"
+                                                     Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Left" 
+                                                                   VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#4290f7"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="#E8F0FE" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="Transparent" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+
+                        <!-- New Theses Button (active) -->
+                        <Border CornerRadius="4" Height="40" Background="#FF314E3D" Cursor="Hand" Margin="0,0,0,10">
+                            <Button Content="New Theses" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Foreground="White" 
+                             FontSize="14" 
+                             FontWeight="SemiBold"
+                             HorizontalAlignment="Stretch">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{x:Null}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <ContentPresenter HorizontalAlignment="Left" 
+                                                               VerticalAlignment="Center"
+                                                               Margin="10,0,0,0"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="#4290f7"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#3983e4"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+
+                        <!-- Settings Button -->
+
+                        <!-- Separator -->
+                        <Border BorderBrush="#5c5c5c3b" BorderThickness="0,1,0,0" Margin="0,0,0,20"/>
+
+                        <!-- Logout Button -->
+                        <Border CornerRadius="4" Height="40" Background="Transparent" Cursor="Hand" Margin="0,0,0,10">
+                            <Button Content="Logout" 
+                             Background="Transparent" 
+                             BorderThickness="0" 
+                             Foreground="#FF314E3D" 
+                             FontSize="14" 
+                             FontWeight="SemiBold"
+                             HorizontalAlignment="Stretch" Click="Button_Click_3">
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{x:Null}">
+                                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Foreground" Value="#333"/>
+                                        <Setter Property="Padding" Value="10,0,0,0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                     HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Stretch"
+                                                     Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Left" 
+                                                                   VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#4290f7"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="#E8F0FE" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                 To="Transparent" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Content Area -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <!-- Content container with responsive width -->
+                <StackPanel 
+                     VerticalAlignment="Center" 
+                     Margin="54,0,54,0">
+
+                    <!-- Responsive form container -->
+                    <Border Background="#FFF1E8D6"
+                     BorderBrush="#E0E0E0"
+                     BorderThickness="1"
+                     CornerRadius="8"
+                     Padding="20"
+                     MinWidth="500"
+                     MaxWidth="800">
+
+                        <!-- Form content -->
+                        <StackPanel>
+                            <!-- Header -->
+                            <TextBlock Text="Create Thesis" 
+                                FontSize="32" 
+                                FontWeight="SemiBold" 
+                                HorizontalAlignment="Center"
+                                Margin="0,0,0,30" Foreground="#FF314E3D"/>
+
+                            <!-- Form fields -->
+                            <UniformGrid Columns="2" Rows="0">
+                                <!-- Form fields will auto-arrange in balanced columns -->
+
+                                <!-- Thesis Title -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Thesis Title" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_title" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontSize="14" FontFamily="Times New Roman" />
+                                </StackPanel>
+
+                                <!-- Thesis Subtitle -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Thesis Subtitle" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_subtitle" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3"  FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- Domain -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Domain" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_domain" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- University -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*University" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_university" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- Faculty -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Faculty" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_faculty" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- Date -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Date" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <DatePicker x:Name="these_date" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" PreviewTextInput="DatePicker_PreviewTextInput"/>
+                                </StackPanel>
+
+                                <!-- Author Name -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Author FirstName" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_authorename" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Author LastName" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_authorelastname" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- Professor Name -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Professor Name" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_profname" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Professor LastName" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_proflastname" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- Keywords -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Keywords" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_keyword" Text="Word1/word2/word3/...." Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- Author Email -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Author Email" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                    <TextBox x:Name="these_authormail" Height="30" BorderBrush="Black" BorderThickness="2" Padding="5,3" FontFamily="Times New Roman" FontSize="14"/>
+                                </StackPanel>
+
+                                <!-- Image -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*Image" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <!-- TextBox takes remaining space -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- Button takes only needed space -->
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBox x:Name="ImagePathTextBox" 
+                                            Grid.Column="0" 
+                                            Height="30" 
+                                            BorderBrush="Black" 
+                                            BorderThickness="2" 
+                                            Padding="5,3" 
+                                            GotFocus="TextBox_GotFocus_1" 
+                                            LostFocus="TextBox_LostFocus_1" 
+                                            FontFamily="Times New Roman" 
+                                            FontSize="14"
+                                            VerticalAlignment="Center"
+                                            Margin="0,0,5,0" IsReadOnly="True"  />
+
+                                        <Button 
+                                            Grid.Column="1"
+                                            Content="Browse..." 
+                                            Height="30"
+                                            Padding="10,0"
+                                            VerticalAlignment="Center" Click="Button_Click_5" />
+                                    </Grid>
+                                </StackPanel>
+
+
+                                <!-- PDF -->
+                                <StackPanel Margin="5,0,5,15">
+                                    <Label Content="*PDF" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D" />
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <!-- TextBox takes remaining space -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- Button takes only needed space -->
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBox x:Name="PdfPathTextBox" 
+            Grid.Column="0"
+            Height="30" 
+            BorderBrush="Black" 
+            BorderThickness="2" 
+            Padding="5,3" 
+            GotFocus="TextBox_GotFocus_1" 
+            LostFocus="TextBox_LostFocus_1" 
+            FontFamily="Times New Roman" 
+            FontSize="14"
+            VerticalAlignment="Center"
+            Margin="0,0,5,0" IsReadOnly="True" />
+
+                                        <Button 
+            Grid.Column="1"
+            Content="Browse..." 
+            Height="30"
+            Padding="10,0"
+            VerticalAlignment="Center" Click="Button_Click_4" />
+                                    </Grid>
+                                </StackPanel>
+                            </UniformGrid>
+
+                            <!-- Description (full width) -->
+                            <StackPanel Margin="5,0,5,20">
+                                <Label Content="*Description" FontSize="14" FontWeight="Bold" Padding="5,5,5,5" Foreground="#FF314E3D"/>
+                                <TextBox x:Name="these_description" Height="100" 
+                                 TextWrapping="Wrap" 
+                                 AcceptsReturn="True" 
+                                 VerticalScrollBarVisibility="Auto"
+                                 BorderBrush="Black" 
+                                 BorderThickness="2"
+                                 Padding="5,3"
+                                 Foreground="Black" FontFamily="Times New Roman" FontSize="14"/>
+                            </StackPanel>
+
+                            <!-- Submit Button -->
+                            <Border CornerRadius="7" Height="45" Background="#FF314E3D" Cursor="Hand" Margin="5,15,5,15">
+                                <Button Content="Create Thesis" 
+                                 Background="Transparent" 
+                                 BorderThickness="0" 
+                                 Foreground="White" 
+                                 FontSize="16" 
+                                 FontWeight="SemiBold" Click="Button_Click_6">
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{x:Null}">
+                                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <ContentPresenter HorizontalAlignment="Center" 
+                                                                     VerticalAlignment="Center"/>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background" Value="#4290f7"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#3983e4"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
+
+                            <!-- Already have account text -->
+
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

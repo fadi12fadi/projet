@@ -1,0 +1,114 @@
+-- Create Users table
+CREATE TABLE Users (
+    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    isAdmin BOOLEAN NOT NULL DEFAULT 0, -- when a user create an account primarily he's not admin until the admin gives him the admin role
+    username VARCHAR NOT NULL UNIQUE,
+	email VARCHAR,
+    passwordHashed VARCHAR NOT NULL, -- password is stored encrypted using the sha256 algorithm
+    matricule VARCHAR(12), -- matricule can be null because not only students can register in the platform 
+    signinDate DATE NOT NULL,
+    firstName VARCHAR NOT NULL,
+    lastName VARCHAR NOT NULL,
+    code_NIN VARCHAR(18) NOT NULL UNIQUE,
+    status TEXT CHECK(status IN ('accepted', 'rejected', 'pending')) NOT NULL DEFAULT 'pending' -- when a user create an account his account will be waiting until the admin accepts him
+);
+
+-- Create index on status in Users table
+CREATE INDEX idx_users_status ON Users(status); -- to make it faster for the admin when he wants to get all users that are wainting to accept their register demand
+
+-- Create Keywords table
+CREATE TABLE KeyWords ( -- keywords are stored in a table because many theses can have the same keyword(s)
+    keyWord VARCHAR PRIMARY KEY
+);
+
+-- Create Profs table
+CREATE TABLE Profs ( -- table that contains the infos of the profs that are supervising students theses
+    prof_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom VARCHAR NOT NULL,
+    prenom VARCHAR NOT NULL,
+);
+
+-- Create Auteurs table
+CREATE TABLE Auteurs (
+    auteur_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom VARCHAR NOT NULL,
+    prenom VARCHAR NOT NULL,
+    mail VARCHAR
+);
+
+-- Create index on nom,prenom in Auteurs table
+CREATE INDEX idx_auteurs_nom_prenom ON Auteurs(nom, prenom); -- to faster the search of theses by the name of the author
+
+-- Create Theses table
+CREATE TABLE Theses (
+    these_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    titre VARCHAR NOT NULL,
+    sousTitre VARCHAR NOT NULL,
+    faculty VARCHAR,
+    university VARCHAR,
+    datePub DATE NOT NULL,
+	-- pdfData column stores the data of the pdf file (binary) this makes it possible to download the platform on multiple machines
+	-- and access the theses automatically without the need of copying files between machines 
+	-- but if there is only one centralized pc or there is a local server to store file in, we advice to DROP this column 
+    pdfData BLOB,
+    pdfPath VARCHAR,
+    description TEXT,
+    domain VARCHAR,
+    status TEXT CHECK(status IN ('pending', 'accepted', 'rejected')) NOT NULL, -- when an author adds a these it will be pending until the admin accept it
+    prof_id INTEGER, -- the id of the prof supervising this these
+    imageData BLOB, -- same thing with the pdfData column
+    imagePath VARCHAR,
+    dateSoutenance DATE,
+    FOREIGN KEY (prof_id) REFERENCES Profs(prof_id) ON DELETE SET NULL
+);
+
+-- Create indexes for Theses table
+CREATE INDEX idx_theses_status ON Theses(status); -- for the admin to get these that are waiting fast
+CREATE INDEX idx_theses_titre ON Theses(titre); -- to faster search on a these by its title
+
+-- Create user_favorites junction table
+CREATE TABLE user_favorites (
+    user_id INTEGER,
+    thesefav_id INTEGER,
+	added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, thesefav_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE SET NULL,
+    FOREIGN KEY (thesefav_id) REFERENCES Theses(these_id) ON DELETE SET NULL
+);
+
+-- Create user_Mythese junction table
+CREATE TABLE user_Mythese ( -- this table is to store the these that proposed by a user NOT AUTHOR ex : a user is suggesting to publish a these written by another student
+    user_id INTEGER,
+    thesePropose_id INTEGER,
+    PRIMARY KEY (user_id, thesePropose_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (thesePropose_id) REFERENCES Theses(these_id)
+);
+
+-- Create user_SearchHistory junction table
+CREATE TABLE user_SearchHistory ( -- store the theses that a user has clicked on lately
+    user_id INTEGER,
+    theseSearch_id INTEGER,
+	added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, theseSearch_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (theseSearch_id) REFERENCES Theses(these_id)
+);
+
+-- Create KeyWord_These junction table
+CREATE TABLE KeyWord_These (
+    keyWord VARCHAR,
+    these_id INTEGER,
+    PRIMARY KEY (keyWord, these_id),
+    FOREIGN KEY (keyWord) REFERENCES KeyWords(keyWord) ON DELETE SET NULL ,
+    FOREIGN KEY (these_id) REFERENCES Theses(these_id) ON DELETE SET NULL
+);
+
+-- Create author_Thesis bridge table
+CREATE TABLE author_Thesis ( -- this is a junction table because an author can have multiple theses ex (for bachelor degree (licence) and for masters degeree) OR a these can be written by many students ex:(Binome)
+    auteur_id INTEGER,
+    these_id INTEGER,
+    PRIMARY KEY (auteur_id, these_id),
+    FOREIGN KEY (auteur_id) REFERENCES Auteurs(auteur_id) ON DELETE SET NULL,
+    FOREIGN KEY (these_id) REFERENCES Theses(these_id) ON DELETE SET NULL
+);

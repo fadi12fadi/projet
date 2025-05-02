@@ -1,0 +1,273 @@
+﻿<Page x:Class="PlatformeGestionThesesEtMemoiresWPF.Windows.RegisterPages.SignUp"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PlatformeGestionThesesEtMemoiresWPF.Windows.RegisterPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SignUp">
+
+    <Grid Background="#FFDCC9A4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Grid.Column="0">
+            <Border CornerRadius="4" Height="40" Background="#FF314E3D" Cursor="Hand" Margin="10,10,10,0">
+                <Button Content="back" 
+                        Background="{x:Null}" BorderThickness="0" Foreground="White" FontSize="16" 
+                        FontWeight="SemiBold" Height="40" VerticalAlignment="Top" Click="Button_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{x:Null}">
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Padding" Value="5"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="#4290f7"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3983e4"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+        </StackPanel>
+
+        <!-- Content Area -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Centered content with responsive sizing -->
+                <StackPanel Grid.Row="0" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            MinWidth="600"
+                            MaxWidth="700"
+                            Margin="20">
+                    <!-- Sign up header -->
+                    <TextBlock HorizontalAlignment="Center" 
+                               FontSize="32" 
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,30" Foreground="#FF314E3D">Create Account</TextBlock>
+
+                    <!-- Two-column form layout -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <!-- Spacer -->
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Left Column -->
+                        <StackPanel Grid.Column="0">
+                            <!-- First Name field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">First Name*</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <TextBox x:Name="firstNameTextBox"
+                                            Padding="10,5" 
+                                            Background="White" 
+                                            BorderThickness="0"
+                                            FontSize="14"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Last Name field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">Last Name*</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <TextBox x:Name="lastNameTextBox"
+                                            Padding="10,5" 
+                                            Background="White" 
+                                            BorderThickness="0"
+                                            FontSize="14"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Email field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">Email*</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <TextBox x:Name="emailTextBox"
+                                            Padding="10,5" 
+                                            Background="White" 
+                                            BorderThickness="0"
+                                            FontSize="14"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Password field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">Password*</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <PasswordBox x:Name="passwordBox"
+                                                Padding="10,5" 
+                                                Background="White" 
+                                                BorderThickness="0"
+                                                FontSize="14"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Right Column -->
+                        <StackPanel Grid.Column="2">
+                            <!-- Username field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">Username*</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <TextBox x:Name="usernameTextBox"
+                                            Padding="10,5" 
+                                            Background="White" 
+                                            BorderThickness="0"
+                                            FontSize="14"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Code NIN field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">Code NIN*</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <TextBox x:Name="codeNINTextBox"
+                                            Padding="10,5" 
+                                            Background="White" 
+                                            BorderThickness="0"
+                                            FontSize="14" PreviewTextInput="codeNINTextBox_PreviewTextInput" MaxLength="18" />
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Matricule field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">Matricule</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <TextBox x:Name="matriculeTextBox"
+                                            Padding="10,5" 
+                                            Background="White" 
+                                            BorderThickness="0"
+                                            FontSize="14" MaxLength="12" />
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Confirm Password field -->
+                            <StackPanel Margin="0,0,0,15">
+                                <Label FontWeight="SemiBold" FontSize="16" Foreground="#FF314E3D">Confirm Password*</Label>
+                                <Border CornerRadius="4" 
+                                        BorderBrush="#5c5c5c3b" 
+                                        BorderThickness="1" 
+                                        Margin="0,5,0,0" 
+                                        Height="38"
+                                        Padding="1">
+                                    <PasswordBox x:Name="confirmPasswordBox"
+                                                Padding="10,5" 
+                                                Background="White" 
+                                                BorderThickness="0"
+                                                FontSize="14"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Sign up button (full width below columns) -->
+                    <Border CornerRadius="7" Height="40" Background="#FF314E3D" Cursor="Hand" Margin="0,30,0,20">
+                        <Button Content="Sign Up" 
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        Background="Transparent" BorderThickness="0"  
+        Foreground="White" FontSize="16" FontWeight="SemiBold" Click="Button_Click_1">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{x:Null}">
+                                    <Setter Property="OverridesDefaultStyle" Value="True"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Padding" Value="5"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <!-- Ce Border rend la surface cliquable -->
+                                                <Border Background="Transparent"
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Padding="{TemplateBinding Padding}">
+                                                    <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="#4290f7"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#3983e4"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
